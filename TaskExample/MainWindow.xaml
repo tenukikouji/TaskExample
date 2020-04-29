@@ -6,7 +6,58 @@
         xmlns:local="clr-namespace:TaskExample"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Grid Margin="50">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20" />
+			<RowDefinition />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="20" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition Width="50"/>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<TextBox x:Name="Input1" Grid.Row="0" Grid.Column="0" local:PlaceHolderBehavior.PlaceHolderText="入力１" Text="10" />
+		<TextBox x:Name="Input2" Grid.Column="2" local:PlaceHolderBehavior.PlaceHolderText="入力２" Text="20" />
+
+		<WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10" ItemHeight="60" ItemWidth="220" >
+			<WrapPanel.Resources>
+				<Style TargetType="Button">
+					<Setter Property="Width" Value="200"/>
+					<Setter Property="Height" Value="40"/>
+				</Style>
+			</WrapPanel.Resources>
+			<Button x:Name="Button1" Click="Button1_Click" >
+				<TextBlock TextWrapping="Wrap">2つの実行中タスクを直列にawaitする①</TextBlock>
+			</Button>
+			<Button x:Name="Button2" Click="Button2_Click" >
+				<TextBlock TextWrapping="Wrap">2つの実行中タスクを直列にawaitする②</TextBlock>
+			</Button>
+			<Button x:Name="Button3" Click="Button3_Click">
+				<TextBlock TextWrapping="Wrap">2つの実行中タスクを並列にawaitする</TextBlock>
+			</Button>
+			<Button x:Name="Button4" Click="Button4_Click">
+				<TextBlock TextWrapping="Wrap">2つの非実行中タスクを直列にawaitする</TextBlock>
+			</Button>
+			<Button x:Name="Button5" Click="Button5_Click">
+				<TextBlock TextWrapping="Wrap">2つの非実行中タスクを実行後に並列にawaitする</TextBlock>
+			</Button>
+			<Button x:Name="Button6" Click="Button6_Click">
+				<TextBlock TextWrapping="Wrap">2つのvoidを直列にawaitする</TextBlock>
+			</Button>
+			<Button x:Name="Button7" Click="Button7_Click">
+				<TextBlock TextWrapping="Wrap">2つの応答値の無いTaskを直列にawaitする</TextBlock>
+			</Button>
+		</WrapPanel>
+		
+		<TextBox x:Name="output1" Grid.Row="2" Grid.Column="0" local:PlaceHolderBehavior.PlaceHolderText="出力１" />
+		<TextBox x:Name="output2" Grid.Row="2" Grid.Column="2" local:PlaceHolderBehavior.PlaceHolderText="出力２" />
+
+		<TextBox x:Name="status" Grid.Row="4" Grid.Column="0" local:PlaceHolderBehavior.PlaceHolderText="状態" />
+		<TextBox x:Name="time" Grid.Row="4" Grid.Column="2" local:PlaceHolderBehavior.PlaceHolderText="経過時間" />
+
+	</Grid>
 </Window>
